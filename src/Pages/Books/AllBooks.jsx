@@ -18,7 +18,7 @@ const AllBooks = () => {
 
     return (
 
-        <div>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-4 justify-items-center mt-8 mb-8'>
 
             {
                 AllBooks.map((SingleBook) => <Book SingleBook={SingleBook} > </Book>)
