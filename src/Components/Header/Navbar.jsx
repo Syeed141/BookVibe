@@ -1,14 +1,14 @@
 import React from "react";
+import { NavLink } from "react-router";
 
 const links = (
-  <>
-    <li>
-      <a>Home</a>
-    </li>
-    <li>
-      <a>Something</a>
-    </li>
-  </>
+  <div className="gap-10">
+
+  <NavLink to="/Home"> Home </NavLink>
+  <NavLink to="/About"> About </NavLink>
+    
+    
+  </div>
 );
 
 const Navbar = () => {
