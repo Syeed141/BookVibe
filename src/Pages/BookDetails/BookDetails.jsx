@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { addToLocalStorage } from "../../Utilities/Localstorage";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -12,9 +13,8 @@ const BookDetails = () => {
       .then((data) => SetBookDetails(data));
   }, []);
 
+
   const Bookid = parseInt(id);
-  console.log("Bookid :", typeof Bookid)
-  console.log("All book detail :" , BookDetails)
 
   const SingleBookDetail = BookDetails.find((book) => book.bookId === Bookid );
   
@@ -23,7 +23,24 @@ const BookDetails = () => {
 if (!SingleBookDetail) return <p>Loading...</p>;
 const { author,image, tags, bookName, category, rating, yearOfPublishing, bookId,
 review} = SingleBookDetail;
-  return (
+  
+const PassBookid = (id) => {
+
+   
+
+    addToLocalStorage(id)
+
+
+
+}
+
+
+
+
+
+
+
+return (
      <div className="max-w-6xl mx-auto p-6 md:p-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center rounded-3xl bg-white p-8 shadow-sm">
         {/* Left: Image */}
@@ -83,8 +100,8 @@ review} = SingleBookDetail;
             <button className="rounded-xl border border-neutral-300 bg-white px-7 py-3 text-sm font-semibold text-neutral-800 shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-50">
               Read
             </button>
-            <button className="rounded-xl bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:brightness-95 active:brightness-90">
-              Wishlist
+            <button onClick={()=> PassBookid(bookId)} className="rounded-xl bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:brightness-95 active:brightness-90">
+              Add to Wishlist
             </button>
           </div>
         </div>
