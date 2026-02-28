@@ -6,6 +6,7 @@ const links = (
 
   <NavLink to="/Home"> Home </NavLink>
   <NavLink to="/About"> About </NavLink>
+  <NavLink to="/ReadList"> ReadList </NavLink>
     
     
   </div>
