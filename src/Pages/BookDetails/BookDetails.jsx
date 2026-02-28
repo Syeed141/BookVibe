@@ -97,12 +97,10 @@ return (
           </div>
 
           <div className="mt-10 flex gap-4">
-            <button className="rounded-xl border border-neutral-300 bg-white px-7 py-3 text-sm font-semibold text-neutral-800 shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-50">
+            <button onClick={()=> PassBookid(bookId)} className="rounded-xl border border-neutral-300 bg-white px-7 py-3 text-sm font-semibold text-neutral-800 shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-50">
               Mark as Read
             </button>
-            <button onClick={()=> PassBookid(bookId)} className="rounded-xl bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:brightness-95 active:brightness-90">
-              Add to Wishlist
-            </button>
+           
           </div>
         </div>
       </div>

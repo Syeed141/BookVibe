@@ -2,14 +2,34 @@ import React from "react";
 import { NavLink } from "react-router";
 
 const links = (
-  <div className="gap-10">
+ 
 
-  <NavLink to="/Home"> Home </NavLink>
-  <NavLink to="/About"> About </NavLink>
-  <NavLink to="/ReadList"> ReadList </NavLink>
-    
-    
-  </div>
+<div className="flex items-center gap-8">
+  {[
+    { to: "/Home", label: "Home" },
+    { to: "/About", label: "About" },
+    { to: "/ReadList", label: "ReadList" },
+  ].map((item) => (
+    <NavLink
+      key={item.to}
+      to={item.to}
+      className={({ isActive }) =>
+        `relative pb-1 text-sm font-semibold transition-colors
+         ${isActive ? "text-blue-600" : "text-gray-600 hover:text-gray-900"}`
+      }
+    >
+      {({ isActive }) => (
+        <>
+          {item.label}
+          <span
+            className={`absolute left-0 -bottom-0.5 h-0.5 w-full rounded transition-transform duration-300
+            ${isActive ? "bg-blue-600 scale-x-100" : "bg-gray-300 scale-x-0 group-hover:scale-x-100"}`}
+          />
+        </>
+      )}
+    </NavLink>
+  ))}
+</div>
 );
 
 const Navbar = () => {
@@ -39,21 +59,22 @@ const Navbar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-                {links}
-
+              {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Book{" "}
+            <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-extrabold text-3xl">
+              Vibe
+            </span>
+          </h1>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {
-                links
-            }
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end flex gap-4">
+          <a className="btn">Login</a>
+          <a className="btn">Sign Up</a>
         </div>
       </div>
     </div>
